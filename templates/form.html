@@ -1,12 +1,26 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Sentiment Analysis</title>
-    </head>
-    <body>
-        <form method="POST">
-            <textarea name="user_text" rows="5"></textarea>
-            <input type="submit" value="Analyze Text">
-        </form>
-    </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis</title>
+</head>
+<body>
+    <h1>Sentiment Analysis with VADER</h1>
+
+    <!-- Form to enter text -->
+    <form action="/" method="POST">
+        <textarea name="user_text" rows="4" cols="50" placeholder="Enter your text here..."></textarea><br><br>
+        <button type="submit">Analyze Sentiment</button>
+    </form>
+
+    <!-- Display sentiment results if they exist -->
+    {% if sentiment %}
+        <h2>Sentiment Analysis Results:</h2>
+        <p>Positive: {{ sentiment['pos'] * 100 }}%</p>
+        <p>Negative: {{ sentiment['neg'] * 100 }}%</p>
+        <p>Neutral: {{ sentiment['neu'] * 100 }}%</p>
+        <p>Compound: {{ sentiment['compound'] * 100 }}%</p>
+    {% endif %}
+</body>
 </html>
